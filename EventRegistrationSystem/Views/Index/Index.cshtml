@@ -1,0 +1,41 @@
+﻿@model EventRegistrationSystem.Models.Registration
+
+@{
+    ViewBag.Title = "Registration Form";
+}
+
+<h2>Registration Form</h2>
+
+@using(Html.BeginForm())
+{ 
+    @Html.ValidationSummary();
+    
+    <dt>@Html.LabelFor(model => model.EmailAddress)</dt>
+    <dt>@Html.TextBoxFor(model => model.EmailAddress)</dt><br />
+
+    <dt>@Html.LabelFor(model => model.FirstName)</dt>
+    <dt>@Html.TextBoxFor(model => model.FirstName)</dt><br />
+
+    <dt>@Html.LabelFor(model => model.LastName)</dt>
+    <dt>@Html.TextBoxFor(model => model.LastName)</dt><br />
+
+    <dt>@Html.LabelFor(model => model.Country)</dt>
+    <dt>@Html.TextBoxFor(model => model.Country)</dt><br />
+    
+    <dt>@Html.LabelFor(model => model.EventId)</dt>
+    <dt><select name="EventId" id="EventId">
+    <option value=""></option>
+        @foreach (EventRegistrationSystem.Models.Event e in ViewBag.EventList)
+    {
+        <option value="@e.Id">@e.EventName</option>
+    }
+    </select></dt><br />
+        
+    <dt>@Html.LabelFor(model => model.ArrivalDate)</dt>
+    <dt>@Html.TextBoxFor(model => model.ArrivalDate)</dt><br />
+    
+    <dt>@Html.LabelFor(model => model.ArrivalTime)</dt>
+    <dt>@Html.TextBoxFor(model => model.ArrivalTime)</dt><br />
+    
+    <input type="submit" value="Submit" />
+}
